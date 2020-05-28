@@ -1,3 +1,4 @@
+
 let autoGrid = function() {
 
     let rowMaker = function() {
@@ -18,6 +19,11 @@ console.log("autoGrid");
 }
 
 autoGrid();
+
+$("#resetButton").click(function() {
+    $("#table").empty();
+    autoGrid();
+});
 
 $("table").on("mouseenter", ".cell", function() {
     $(this).css("background-color", "black");
