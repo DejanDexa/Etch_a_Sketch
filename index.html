@@ -9,7 +9,18 @@
 </head>
 <body>
     <table id="table"></table>
-    <div id="resetButton"onclick>Reset Grid</div>
+
+    <form id="gridForm" class="grid resetSub">
+        <label for="myGrid">Grid Size</label>
+            <input type="number" name="girdSize" id="myGrid"
+            class="grid resetSub" min="2" max="64" placeholder="2-50"/>
+    </form>
+
+    <div id="resetButton" onclick="checkVal()">Reset Grid</div>
+ 
+    <label for="color" id="colorButton">Select Color</label>
+    <input type="color" id="color" name="color" value="#000000" class="colorful colorSub" pattern="#[a-f0-9]{6}"/>
+    
     <script src=app.js></script> 
 </body>
 </html>
