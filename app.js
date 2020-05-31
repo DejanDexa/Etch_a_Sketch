@@ -1,3 +1,16 @@
+let newSize;
+
+function checkVal() {
+    let gridVal = $("#myGrid").val();
+    if (gridVal > 0 && gridVal < 64) {
+        console.log("valid " + gridVal);
+        newSize = gridVal;
+        console.log(newSize);
+    } else {
+        newSize=16;
+        console.log("invalid");
+    }
+};
 
 let autoGrid = function() {
 
@@ -14,17 +27,46 @@ rowMaker();
          $(".row").append("<td class='cell'></td>")
      }
 };
+
 cellMaker();
 console.log("autoGrid");
 }
 
-autoGrid();
+let specGrid = function() {
+
+    let specRowMaker = function() {
+        for (i = 0; i < newSize; i++) {
+            $("#table").append("<tr class='row'></tr>");
+        }
+    };
+    specRowMaker();
+
+    let specCellMaker = function() {
+        for (i = 0; i < newSize; i++) {
+            $(".row").append("<td class='cell'></td>")
+        }   
+    };
+
+    specCellMaker();
+    console.log("specGrid: " + newSize);
+    
+};
+
+let gridMaker = function() {
+    if (newSize > 1) {
+        specGrid();
+    } else {
+        autoGrid();
+    }
+};
+
+gridMaker();
 
 $("#resetButton").click(function() {
     $("#table").empty();
-    autoGrid();
+    gridMaker();
 });
 
 $("table").on("mouseenter", ".cell", function() {
-    $(this).css("background-color", "black");
+    $(this).css("background-color", $("#color").val());
 });
